@@ -7,7 +7,6 @@ namespace Entity;
 /// </summary>
 public abstract class EntityBase : ITenantEntityBase
 {
-    [Key]
     public Guid Id { get; set; } = Guid.CreateVersion7();
     public DateTimeOffset CreatedTime { get; private set; } = DateTimeOffset.UtcNow;
     public DateTimeOffset UpdatedTime { get; set; } = DateTimeOffset.UtcNow;

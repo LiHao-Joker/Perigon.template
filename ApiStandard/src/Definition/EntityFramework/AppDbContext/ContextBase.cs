@@ -77,30 +77,11 @@ public abstract class ContextBase : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<Tenant>().Ignore(t => t.TenantId);
-
+        builder.ApplyConfigurationsFromAssembly(typeof(ContextBase).Assembly);
         base.OnModelCreating(builder);
-        OnModelExtendCreating(builder);
         OnSQLiteModelCreating(builder);
     }
 
-    private void OnModelExtendCreating(ModelBuilder modelBuilder)
-    {
-        IEnumerable<Microsoft.EntityFrameworkCore.Metadata.IMutableEntityType> entityTypes =
-            modelBuilder.Model.GetEntityTypes();
-        foreach (Microsoft.EntityFrameworkCore.Metadata.IMutableEntityType entityType in entityTypes)
-        {
-            // Skip entity types without a CLR type (shadow/relational types)
-            if (entityType.ClrType == null)
-            {
-                continue;
-            }
-
-            if (typeof(EntityBase).IsAssignableFrom(entityType.ClrType))
-            {
-                modelBuilder.Entity(entityType.ClrType).HasKey(nameof(EntityBase.Id));
-            }
-        }
-    }
 
     private void OnSQLiteModelCreating(ModelBuilder modelBuilder)
     {
