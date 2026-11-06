@@ -6,6 +6,8 @@
 
 ### Changed
 
+- 模板包的后续 CI 发布目标改为 GitHub Packages；已有 nuget.org 版本的可见性不受影响。
+- 两套模板将 MailKit 的传递依赖 System.Security.Cryptography.Pkcs 升级至 10.0.13，修复已公布的漏洞。
 - MiniApi 非生产环境提供 Swagger UI（`/swagger`），读取现有的 `/openapi/v1.json`。
 - MiniApi AppHost 仅在 Angular 项目存在时启动前端资源，支持 `frontType=None` 和 `frontType=Angular`。
 
@@ -68,4 +70,3 @@
 - `IUserContext.RoleIds` 依赖令牌中的 `role_id` GUID claims；已有令牌不包含这些 claims 时该列表为空。
 - ApiStandard 的自动模型验证错误现在返回 `{ title, detail, status, traceId }` 结构，客户端若依赖旧的 ASP.NET Core 默认验证响应形状，需要调整解析逻辑。
 - 使用 MiniApi 时，endpoint group 仍需继承 `RestEndpointBase` 并提供符合约定的 `MapEndpoints` 方法。
-

@@ -1,5 +1,7 @@
 # PT0005：依赖与上下文调整
 
+- 2026-11-06：两套模板 Release 构建和模板包打包通过，PKCS 解析到 10.0.13；MiniApi Release 还原包含 `net10.0/linux-musl-x64`。本机配置的多个包源产生 NU1507。
+- 本次 ApiStandard 单元测试 5/22 通过，其余因 EF Core 将 `IEntityBase` 作为实体类型处理而失败；MiniApi 集成测试因本机 Docker 守护程序不可用未能启动。GitHub Packages 发布及访问权限未实际验证。
 - [x] 升级 MiniApi 的 Perigon.PostgreSQL，保留工具已发布版本。
 - [x] 删除重复上下文并统一服务注册与文档。
 - [x] 对照 0.2.0 包检查模板使用的 API。

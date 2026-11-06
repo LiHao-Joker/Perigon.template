@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8000c871-af36-46b7-be39-47554d6ef71f" name="更改" comment="" />
+    <list default="true" id="8000c871-af36-46b7-be39-47554d6ef71f" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Perigon.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Perigon.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiStandard/Directory.Packages.props" beforeDir="false" afterPath="$PROJECT_DIR$/ApiStandard/Directory.Packages.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiStandard/src/Perigon/Perigon.AspNetCore.Toolkit/Perigon.AspNetCore.Toolkit.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ApiStandard/src/Perigon/Perigon.AspNetCore.Toolkit/Perigon.AspNetCore.Toolkit.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniApi/Directory.Packages.props" beforeDir="false" afterPath="$PROJECT_DIR$/MiniApi/Directory.Packages.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MiniApi/src/Perigon/Perigon.AspNetCore.Toolkit/Perigon.AspNetCore.Toolkit.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MiniApi/src/Perigon/Perigon.AspNetCore.Toolkit/Perigon.AspNetCore.Toolkit.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Development/Changelog.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Development/Changelog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Development/ProjectTracking.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Development/ProjectTracking.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/UserStory/Iter3-DependencyRefresh/PD0005-AspirePostgreSQL.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/UserStory/Iter3-DependencyRefresh/PD0005-AspirePostgreSQL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/UserStory/Iter3-DependencyRefresh/PT0005-AspirePostgreSQL.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/UserStory/Iter3-DependencyRefresh/PT0005-AspirePostgreSQL.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_E:/SoftWare/template/Perigon.template" value="3Lj1oJ5XGU099v36YZyl3eZ3kD7" />
+    </persistenceIdMap>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="nuget" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -87,6 +118,23 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3LizSKYg9Hd4u0a0a0vqhKGYU5N" />
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="ensembleEnabled" value="false" />
+        <option name="modeId" value="Ask" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -105,8 +153,13 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "nuget",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "pnpm"
   }
 }]]></component>

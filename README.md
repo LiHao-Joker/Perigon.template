@@ -22,11 +22,16 @@
 
 ## 使用Nuget安装
 
-模板已经发布到[`nuget`](https://www.nuget.org/packages/Perigon.templates)上，请根据你的项目版本下载对应的模板。
+历史版本仍可从 [nuget.org](https://www.nuget.org/packages/Perigon.templates) 获取。此仓库后续通过 GitHub Packages 发布私有包；已发布到 nuget.org 的版本不会因此自动变为私有。
+
+访问私有包需要获得包读取权限，并使用具有 `read:packages` 权限的 GitHub classic personal access token 配置 NuGet 源。令 `OWNER` 为仓库所有者，`USERNAME` 为 GitHub 用户名，`TOKEN` 为令牌：
 
 ```pwsh
-dotnet new install Perigon.templates --version 1.3.17
+dotnet nuget add source "https://nuget.pkg.github.com/OWNER/index.json" --name perigon-github --username USERNAME --password TOKEN --store-password-in-clear-text
+dotnet new install Perigon.templates --version <version> --nuget-source "https://nuget.pkg.github.com/OWNER/index.json"
 ```
+
+`--store-password-in-clear-text` 会将令牌明文写入用户 NuGet 配置，请保护该文件且不要提交到仓库。GitHub Packages 中已有的同名包必须设为 private，并为此仓库的 Actions 授予包写入权限；首次发布的新包默认为 private，发布后仍应检查包的可见性和访问权限。
 
 ## 模板说明
 

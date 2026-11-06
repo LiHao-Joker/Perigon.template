@@ -3,6 +3,7 @@
 - 两套模板使用 Aspire 13.6.4；MiniApi 使用 Perigon.PostgreSQL 0.3.0，本地工具使用 0.3.0。
 - MiniApi 保留 `EntityFramework.AppDbContext.DefaultDbContext`，使用 Perigon.PostgreSQL 0.3.0 的 `DbContextOptions<DefaultDbContext>` 和 `AddDbContextPool` 注入；连接字符串从宿主配置读取，Manager 和服务使用同一类型。启用连接池和 OpenTelemetry，连接与命令超时分别为 15 秒和 30 秒。
 - 0.2.0 中模板使用的查询、写入和事务 API 可用；其他消费者应独立评估升级影响。
+- 两套模板的 MailKit 依赖链使用 System.Security.Cryptography.Pkcs 10.0.13，避免 GHSA-846f-f764-76mx 和 GHSA-2fmv-rv2c-59x7 中受影响的版本。
 
 ## MiniApi CommonMod 业务边界
 

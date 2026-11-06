@@ -1,4 +1,4 @@
-name: Build and Publish to NuGet
+name: Build and Publish to GitHub Packages
 
 on:
   push:
@@ -11,7 +11,8 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout code
@@ -25,7 +26,7 @@ jobs:
       - name: Restore template solutions
         run: |
           dotnet restore ApiStandard/MyProjectName.slnx
-          dotnet restore MiniApi/MyProjectName.slnx
+          dotnet restore MiniApi/MyProjectName.slnx -p:Configuration=Release
           dotnet restore Pack.csproj
 
       - name: Build template solutions
@@ -42,13 +43,38 @@ jobs:
         run: dotnet test --project tests/ApiTest/ApiTest.csproj --configuration Release --no-restore --no-build
 
       - name: Pack NuGet package
-        run: dotnet pack Pack.csproj -c Release --output ./artifacts --no-restore
+        run: dotnet pack Pack.csproj -c Release --output ./artifacts --no-restore -p:RepositoryUrl="https://github.com/$GITHUB_REPOSITORY"
 
-      - name: NuGet login (OIDC → temp API key)
-        uses: NuGet/login@v1
-        id: nuget-login
-        with:
-          user: ${{ secrets.NUGET_USER }}
+      - name: Check existing package visibility
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          owner_type=$(gh api "users/$GITHUB_REPOSITORY_OWNER" --jq .type)
+          case "$owner_type" in
+            Organization) owner_path="orgs/$GITHUB_REPOSITORY_OWNER" ;;
+            User) owner_path="users/$GITHUB_REPOSITORY_OWNER" ;;
+            *) echo "::error::Unsupported package owner type: $owner_type"; exit 1 ;;
+          esac
+          response=$(curl --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -w $'\n%{http_code}' \
+            "https://api.github.com/$owner_path/packages/nuget/Perigon.templates")
+          status="${response##*$'\n'}"
+          body="${response%$'\n'*}"
+          case "$status" in
+            200)
+              visibility=$(printf '%s' "$body" | jq -r '.visibility')
+              if [ "$visibility" != "private" ]; then
+                echo "::error::Existing package visibility is '$visibility', not private."
+                exit 1
+              fi
+              ;;
+            404) echo "Package is not visible to this token; a new NuGet package defaults to private." ;;
+            *) echo "::error::Could not verify package visibility (HTTP $status)."; exit 1 ;;
+          esac
 
-      - name: Publish to NuGet
-        run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - name: Publish to GitHub Packages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push ./artifacts/*.nupkg --api-key "$GH_TOKEN" --source "https://nuget.pkg.github.com/$GITHUB_REPOSITORY_OWNER/index.json"
